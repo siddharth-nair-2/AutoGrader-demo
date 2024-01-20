@@ -90,7 +90,7 @@ const updateAssignment = asyncHandler(async (req, res) => {
 
 // Delete an assignment
 const AssignmentDelete = asyncHandler(async (req, res) => {
-  const assignmentID = req.params.assignmentID; // Get assignmentID from URL params
+  const assignmentID = req.params.assignmentID;
 
   try {
     await Assignment.deleteOne({ _id: assignmentID });
@@ -109,15 +109,13 @@ const AssignmentDelete = asyncHandler(async (req, res) => {
 
 // Get assignments for a course
 const getAssignments = asyncHandler(async (req, res) => {
-  const courseID = req.query.courseID; // Get courseID from query parameters
+  const courseID = req.query.courseID;
 
   try {
     const assignments = await Assignment.find({ courseID: courseID });
 
     if (assignments.length === 0) {
-      return res
-        .status(200)
-        .json({ message: "No assignments found for this course." });
+      return res.status(200).json([]);
     }
 
     res.status(200).json(assignments);
@@ -128,7 +126,7 @@ const getAssignments = asyncHandler(async (req, res) => {
 
 // Get assignments visible to students
 const getStudentAssignments = asyncHandler(async (req, res) => {
-  const courseID = req.query.courseID; // Get courseID from query parameters
+  const courseID = req.query.courseID;
 
   try {
     const assignments = await Assignment.find({
@@ -137,11 +135,7 @@ const getStudentAssignments = asyncHandler(async (req, res) => {
     });
 
     if (assignments.length === 0) {
-      // No assignments found for the given courseID
-      return res.status(200).json({
-        message:
-          "No assignments found for this course, that are avaiable for the students.",
-      });
+      return res.status(200).json([]);
     }
 
     res.status(200).json(assignments);

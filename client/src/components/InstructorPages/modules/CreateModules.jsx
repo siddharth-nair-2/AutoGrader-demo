@@ -95,7 +95,7 @@ const CreateModules = () => {
 
     if (fileList.length > 0) {
       modal.confirm({
-        title: "Confirm File Upload and Test Creation",
+        title: "Confirm File Upload and Module Creation",
         content: (
           <div>
             <p>

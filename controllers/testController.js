@@ -109,9 +109,7 @@ const getTestsForCourse = asyncHandler(async (req, res) => {
     const tests = await Test.find({ courseID: courseID });
 
     if (!tests || tests.length === 0) {
-      return res
-        .status(404)
-        .json({ message: "No tests found for this course" });
+      return res.status(200).json([]);
     }
 
     res.status(200).json(tests);
@@ -130,10 +128,7 @@ const getStudentTests = asyncHandler(async (req, res) => {
     });
 
     if (!tests.length) {
-      return res.status(404).json({
-        message:
-          "No tests found for this course which are avaiable for students.",
-      });
+      return res.status(200).json([]);
     }
 
     res.status(200).json(tests);
@@ -165,7 +160,7 @@ const getAllTests = asyncHandler(async (req, res) => {
     const tests = await Test.find({});
 
     if (!tests || tests.length === 0) {
-      return res.status(404).json({ message: "Tests not found" });
+      return res.status(200).json([]);
     }
     res.status(200).send(tests);
   } catch (error) {

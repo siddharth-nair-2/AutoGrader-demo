@@ -121,9 +121,7 @@ const getModulesForCourse = asyncHandler(async (req, res) => {
     .populate("theoryAssignments");
 
   if (!modules || modules.length === 0) {
-    return res
-      .status(404)
-      .json({ message: "No modules found for this course!" });
+    return res.status(200).json([]);
   }
 
   res.status(200).json(modules);
@@ -158,7 +156,7 @@ const getAllModules = asyncHandler(async (req, res) => {
       .populate("theoryAssignments");
 
     if (!modules || modules.length === 0) {
-      return res.status(404).json({ message: "Modules not found" });
+      return res.status(200).json([]);
     }
 
     res.status(200).send(modules);
