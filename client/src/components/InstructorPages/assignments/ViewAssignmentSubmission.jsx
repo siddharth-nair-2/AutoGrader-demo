@@ -14,7 +14,7 @@ const ViewAssignmentSubmission = () => {
   const fetchAllSubmissions = async () => {
     try {
       const data = await axios.get(
-        `http://localhost:5000/api/tracker/submissions?courseID=${
+        `/api/tracker/submissions?courseID=${
           JSON.parse(localStorage.getItem("assignmentInfo")).courseID
         }&assignmentID=${
           JSON.parse(localStorage.getItem("assignmentInfo"))._id
@@ -65,12 +65,12 @@ const ViewAssignmentSubmission = () => {
           // Update assignment visibility
           if (assignmentData.hasOwnProperty("questions")) {
             await axios.patch(
-              `http://localhost:5000/api/tracker/assignments/${assignmentData._id}`,
+              `/api/tracker/assignments/${assignmentData._id}`,
               { visibleToStudents: !assignmentData.visibleToStudents }
             );
           } else {
             await axios.patch(
-              `http://localhost:5000/api/tracker/theoryAssignments/${assignmentData._id}`,
+              `/api/tracker/theoryAssignments/${assignmentData._id}`,
               { visibleToStudents: !assignmentData.visibleToStudents }
             );
           }
@@ -126,11 +126,11 @@ const ViewAssignmentSubmission = () => {
           // Delete assignment
           if (assignmentData.hasOwnProperty("questions")) {
             await axios.delete(
-              `http://localhost:5000/api/tracker/assignments/${assignmentData._id}`
+              `/api/tracker/assignments/${assignmentData._id}`
             );
           } else {
             await axios.delete(
-              `http://localhost:5000/api/tracker/theoryAssignments/${assignmentData._id}`
+              `/api/tracker/theoryAssignments/${assignmentData._id}`
             );
           }
 
@@ -156,7 +156,7 @@ const ViewAssignmentSubmission = () => {
 
   const deleteFiles = async (publicIds) => {
     try {
-      await axios.post("http://localhost:5000/api/tracker/delete-file", {
+      await axios.post("/api/tracker/delete-file", {
         publicIds,
       });
 

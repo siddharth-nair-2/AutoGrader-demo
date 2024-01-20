@@ -40,7 +40,7 @@ const CreateModules = () => {
   const fetchAvailableAssignments = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/tracker/allAssignments?courseID=${
+        `/api/tracker/allAssignments?courseID=${
           JSON.parse(localStorage.getItem("courseInfo"))._id
         }`
       );
@@ -58,7 +58,7 @@ const CreateModules = () => {
   const fetchAvailableTests = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/tracker/tests/course/${
+        `/api/tracker/tests/course/${
           JSON.parse(localStorage.getItem("courseInfo"))._id
         }`
       );
@@ -195,7 +195,7 @@ const CreateModules = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/tracker/module",
+        "/api/tracker/module",
         {
           courseID: selectedCourse._id,
           title: name,

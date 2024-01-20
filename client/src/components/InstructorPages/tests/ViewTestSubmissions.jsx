@@ -20,7 +20,7 @@ const ViewTestSubmissions = () => {
     try {
       const testId = JSON.parse(localStorage.getItem("testInfo"))._id;
       const response = await axios.get(
-        `http://localhost:5000/api/tracker/test-submissions/test/${testId}`
+        `/api/tracker/test-submissions/test/${testId}`
       );
       setSubmissions(response.data);
     } catch (error) {
@@ -62,7 +62,7 @@ const ViewTestSubmissions = () => {
 
           // Delete the test
           await axios.delete(
-            `http://localhost:5000/api/tracker/test/${testData._id}`
+            `/api/tracker/test/${testData._id}`
           );
 
           notification.success({
@@ -87,7 +87,7 @@ const ViewTestSubmissions = () => {
 
   const deleteFiles = async (publicIds) => {
     try {
-      await axios.post("http://localhost:5000/api/tracker/delete-file", {
+      await axios.post("/api/tracker/delete-file", {
         publicIds,
       });
 

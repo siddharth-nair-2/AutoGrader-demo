@@ -123,7 +123,7 @@ const EditModuleModal = ({
 
     try {
       const response = await axios.patch(
-        `http://localhost:5000/api/tracker/module/${moduleData._id}`,
+        `/api/tracker/module/${moduleData._id}`,
         updatedModuleData
       );
 
@@ -155,7 +155,7 @@ const EditModuleModal = ({
       onOk: async () => {
         try {
           await axios.delete(
-            `http://localhost:5000/api/tracker/module/${moduleData._id}`
+            `/api/tracker/module/${moduleData._id}`
           );
 
           notification.success({

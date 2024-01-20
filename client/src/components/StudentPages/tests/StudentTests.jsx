@@ -109,7 +109,7 @@ const StudentTest = () => {
     };
   
     try {
-      const response = await axios.post('http://localhost:5000/api/tracker/test-submission', submissionData);
+      const response = await axios.post('/api/tracker/test-submission', submissionData);
       
       // Handle success
       console.log('Test Submitted Successfully', response.data);

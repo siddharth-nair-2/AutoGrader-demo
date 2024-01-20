@@ -34,12 +34,12 @@ const ViewAllStudentTests = () => {
 
       // Fetch all tests for the course
       const { data: testsData } = await axios.get(
-        `http://localhost:5000/api/tracker/tests/student/${courseId}`
+        `/api/tracker/tests/student/${courseId}`
       );
 
       // Fetch all submissions by the student
       const { data: submissionsData } = await axios.get(
-        `http://localhost:5000/api/tracker/test-submissions/student/${studentId}`
+        `/api/tracker/test-submissions/student/${studentId}`
       );
 
       // Mark tests as completed based on submissions

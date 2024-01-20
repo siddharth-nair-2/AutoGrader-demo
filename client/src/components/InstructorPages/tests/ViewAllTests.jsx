@@ -31,7 +31,7 @@ const ViewAllTests = () => {
   const fetchTests = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/tracker/tests/course/${
+        `/api/tracker/tests/course/${
           JSON.parse(localStorage.getItem("courseInfo"))._id
         }`
       );

@@ -68,7 +68,7 @@ const StudentTheoryAssignments = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/tracker/theory-submission?studentID=${user._id}&assignmentID=${selectedAssignment._id}`
+        `/api/tracker/theory-submission?studentID=${user._id}&assignmentID=${selectedAssignment._id}`
       );
       if (response.data) {
         // Existing submission found
@@ -155,7 +155,7 @@ const StudentTheoryAssignments = () => {
   const deleteOldFiles = async (files) => {
     const publicIds = files.map((file) => file.publicId);
     try {
-      await axios.post("http://localhost:5000/api/tracker/delete-file", {
+      await axios.post("/api/tracker/delete-file", {
         publicIds,
       });
     } catch (error) {
@@ -217,7 +217,7 @@ const StudentTheoryAssignments = () => {
   const updateSubmission = async (uploadedFiles) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/tracker/theory-submission/update?studentID=${user._id}&assignmentID=${selectedAssignment._id}`,
+        `/api/tracker/theory-submission/update?studentID=${user._id}&assignmentID=${selectedAssignment._id}`,
         {
           comment: form.getFieldValue("comment")
             ? form.getFieldValue("comment")
@@ -244,7 +244,7 @@ const StudentTheoryAssignments = () => {
 
   const submitAssignment = async (uploadedFiles) => {
     try {
-      await axios.post("http://localhost:5000/api/tracker/theory-submission", {
+      await axios.post("/api/tracker/theory-submission", {
         studentName: `${user.firstName} ${user.lastName}`,
         studentID: user._id,
         assignmentID: selectedAssignment._id,

@@ -26,7 +26,7 @@ const Student = () => {
     const courseIDs = user?.courses?.map((course) => course.courseID) || [];
     if (courseIDs.length === 0) return;
 
-    const url = `http://localhost:5000/api/tracker/studentCourses?courseIds=${courseIDs.join(
+    const url = `/api/tracker/studentCourses?courseIds=${courseIDs.join(
       ","
     )}`;
 

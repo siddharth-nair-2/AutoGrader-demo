@@ -187,7 +187,7 @@ const CreateTest = () => {
     
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/tracker/test",
+        "/api/tracker/test",
         {
           courseID: selectedCourse._id,
           name: name,

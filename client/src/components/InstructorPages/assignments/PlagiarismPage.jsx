@@ -20,7 +20,7 @@ const PlagiarismPage = () => {
 
   const fetchAllPlagiarismComparisons = async () => {
     try {
-      let url = `http://localhost:5000/api/tracker/plagiarism?assignmentID=${
+      let url = `/api/tracker/plagiarism?assignmentID=${
         JSON.parse(localStorage.getItem("assignmentInfo"))._id
       }&courseID=${
         JSON.parse(localStorage.getItem("assignmentInfo")).courseID
