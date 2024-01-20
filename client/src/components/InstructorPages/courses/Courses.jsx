@@ -54,7 +54,6 @@ const Courses = () => {
     fetchAvailableTests();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   const fetchAvailableAssignments = async () => {
     try {
       const { data } = await axios.get(
@@ -64,12 +63,20 @@ const Courses = () => {
       );
       setAvailableAssignments(data);
     } catch (error) {
-      notification.error({
-        message: "Failed to fetch assignments",
-        description:
-          error.response?.data?.message ||
-          "An error occurred while fetching assignments.",
-      });
+      if (error.response && error.response.status === 404) {
+        setAvailableAssignments([]);
+        notification.info({
+          message: "No Assignments",
+          description: "This course has no assignments.",
+        });
+      } else {
+        notification.error({
+          message: "Failed to fetch assignments",
+          description:
+            error.response?.data?.message ||
+            "An error occurred while fetching assignments.",
+        });
+      }
     }
   };
 
@@ -82,14 +89,23 @@ const Courses = () => {
       );
       setAvailableTests(data);
     } catch (error) {
-      notification.error({
-        message: "Failed to fetch assignments",
-        description:
-          error.response?.data?.message ||
-          "An error occurred while fetching assignments.",
-      });
+      if (error.response && error.response.status === 404) {
+        setAvailableTests([]);
+        notification.info({
+          message: "No Tests",
+          description: "This course has no tests.",
+        });
+      } else {
+        notification.error({
+          message: "Failed to fetch tests",
+          description:
+            error.response?.data?.message ||
+            "An error occurred while fetching tests.",
+        });
+      }
     }
   };
+
   const fetchModulesForCourse = async () => {
     try {
       const courseId = JSON.parse(localStorage.getItem("courseInfo"))?._id;
@@ -107,12 +123,20 @@ const Courses = () => {
       );
       setModules(response.data);
     } catch (error) {
-      notification.error({
-        message: "Failed to Fetch Modules",
-        description:
-          error.response?.data?.message ||
-          "An error occurred while fetching modules.",
-      });
+      if (error.response && error.response.status === 404) {
+        setModules([]);
+        notification.info({
+          message: "No Modules",
+          description: "This course has no modules.",
+        });
+      } else {
+        notification.error({
+          message: "Failed to Fetch Modules",
+          description:
+            error.response?.data?.message ||
+            "An error occurred while fetching modules.",
+        });
+      }
     }
   };
 
@@ -195,7 +219,9 @@ const Courses = () => {
           onEdit={handleUpdateModule}
           onCancel={() => setIsEditModalVisible(false)}
           moduleData={currentEditingModule}
-          availableAssignments={availableAssignments}
+          availableAssignments={
+            availableAssignments.length > 0 ? availableAssignments : []
+          }
           availableTests={availableTests}
         />
         <div className="max-w-7xl mx-auto mt-6">

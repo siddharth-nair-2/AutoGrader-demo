@@ -91,9 +91,7 @@ const getTheoryAssignments = asyncHandler(async (req, res) => {
   const theoryAssignments = await TheoryAssignment.find({ courseID });
 
   if (!theoryAssignments || theoryAssignments.length === 0) {
-    return res
-      .status(404)
-      .json({ message: "No theory assignments found for this course" });
+    return res.status(200).json([]);
   }
 
   res.status(200).json(theoryAssignments);
@@ -109,9 +107,7 @@ const getStudentTheoryAssignments = asyncHandler(async (req, res) => {
   });
 
   if (!theoryAssignments || theoryAssignments.length === 0) {
-    return res.status(404).json({
-      message: "No theory assignments available for students in this course",
-    });
+    return res.status(200).json([]);
   }
 
   res.status(200).json(theoryAssignments);

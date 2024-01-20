@@ -21,9 +21,7 @@ const getCombinedAssignments = asyncHandler(async (req, res) => {
     const combinedAssignments = [...assignments, ...theoryAssignments];
 
     if (combinedAssignments.length === 0) {
-      return res
-        .status(200)
-        .json({ message: "No assignments found for this course." });
+      return res.status(200).json([]);
     }
 
     res.status(200).json(combinedAssignments);
@@ -56,9 +54,7 @@ const getStudentVisibleAssignments = asyncHandler(async (req, res) => {
     const combinedAssignments = [...assignments, ...theoryAssignments];
 
     if (combinedAssignments.length === 0) {
-      return res.status(200).json({
-        message: "No student-visible assignments found for this course.",
-      });
+      return res.status(200).json([]);
     }
 
     res.status(200).json(combinedAssignments);

@@ -228,7 +228,7 @@ const EditModuleModal = ({
         </Form.Item>
         <Form.Item name="assignments" label="Assignments">
           <Select mode="multiple" placeholder="Select Assignments">
-            {availableAssignments.map((assn) => (
+            {availableAssignments?.map((assn) => (
               <Select.Option key={assn._id} value={assn._id}>
                 {assn.name}
               </Select.Option>
@@ -237,7 +237,7 @@ const EditModuleModal = ({
         </Form.Item>
         <Form.Item name="tests" label="Tests">
           <Select mode="multiple" placeholder="Select Tests">
-            {availableTests.map((test) => (
+            {availableTests?.map((test) => (
               <Select.Option key={test._id} value={test._id}>
                 {test.name}
               </Select.Option>

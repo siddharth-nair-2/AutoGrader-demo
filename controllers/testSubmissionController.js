@@ -107,8 +107,7 @@ const getTestSubmission = asyncHandler(async (req, res) => {
   );
 
   if (!submission) {
-    res.status(404);
-    throw new Error("Test submission not found");
+    return res.status(200).json([]);
   }
 
   res.status(200).json(submission);
@@ -154,8 +153,7 @@ const getAllTestSubmissions = asyncHandler(async (req, res) => {
   );
 
   if (!submissions.length) {
-    res.status(404);
-    throw new Error("No test submissions found");
+    return res.status(200).json([]);
   }
 
   res.status(200).json(submissions);
