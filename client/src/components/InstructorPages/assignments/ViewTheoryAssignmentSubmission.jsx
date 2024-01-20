@@ -13,7 +13,7 @@ const ViewTheoryAssignmentSubmission = () => {
   const fetchAllSubmissions = async () => {
     try {
       const data = await axios.get(
-        `http://localhost:5000/api/tracker//theory-submissions?courseID=${
+        `/api/tracker//theory-submissions?courseID=${
           JSON.parse(localStorage.getItem("assignmentInfo")).courseID
         }&assignmentID=${
           JSON.parse(localStorage.getItem("assignmentInfo"))._id
@@ -62,7 +62,7 @@ const ViewTheoryAssignmentSubmission = () => {
       onOk: async () => {
         try {
           await axios.patch(
-            `http://localhost:5000/api/tracker/theoryAssignments/${assignmentData._id}`,
+            `/api/tracker/theoryAssignments/${assignmentData._id}`,
             { visibleToStudents: !assignmentData.visibleToStudents }
           );
 
@@ -115,7 +115,7 @@ const ViewTheoryAssignmentSubmission = () => {
           }
 
           await axios.delete(
-            `http://localhost:5000/api/tracker/theoryAssignments/${assignmentData._id}`
+            `/api/tracker/theoryAssignments/${assignmentData._id}`
           );
 
           notification.success({
@@ -140,7 +140,7 @@ const ViewTheoryAssignmentSubmission = () => {
 
   const deleteFiles = async (publicIds) => {
     try {
-      await axios.post("http://localhost:5000/api/tracker/delete-file", {
+      await axios.post("/api/tracker/delete-file", {
         publicIds,
       });
 

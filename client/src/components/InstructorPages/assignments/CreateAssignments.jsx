@@ -143,7 +143,7 @@ const CreateAssignments = () => {
         },
       };
       await axios.post(
-        "http://localhost:5000/api/tracker/assignments",
+        "/api/tracker/assignments",
         {
           courseID: selectedCourse._id,
           name: formData.name,

@@ -44,7 +44,7 @@ const CourseStudents = () => {
   const fetchCourseStudents = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/user/students/course/${
+        `/api/user/students/course/${
           JSON.parse(localStorage.getItem("courseInfo"))._id
         }`
       );
@@ -62,7 +62,7 @@ const CourseStudents = () => {
   const fetchAllStudents = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/user/students"
+        "/api/user/students"
       );
       const filteredData = response.data.filter((student) => {
         return (
@@ -87,7 +87,7 @@ const CourseStudents = () => {
   const addStudent = async (student) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/user/${student._id}/courses/add/${selectedCourse._id}`
+        `/api/user/${student._id}/courses/add/${selectedCourse._id}`
       );
       fetchCourseStudents();
       fetchAllStudents();
@@ -112,7 +112,7 @@ const CourseStudents = () => {
   const removeStudent = async (student) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/user/${student._id}/courses/remove/${selectedCourse._id}`
+        `/api/user/${student._id}/courses/remove/${selectedCourse._id}`
       );
       fetchCourseStudents();
       fetchAllStudents();

@@ -46,7 +46,7 @@ const SingleTestSubmission = () => {
 
   const fetchSubmissionDetails = async () => {
     try {
-      const url = `http://localhost:5000/api/tracker/test-submission/${id}`;
+      const url = `/api/tracker/test-submission/${id}`;
       console.log(url);
       const response = await axios.get(url);
       setSubmission(response.data);
@@ -89,7 +89,7 @@ const SingleTestSubmission = () => {
       }));
 
       const response = await axios.patch(
-        `http://localhost:5000/api/tracker/test-submission/${submission._id}`,
+        `/api/tracker/test-submission/${submission._id}`,
         {
           responses: updatedResponses,
         }
